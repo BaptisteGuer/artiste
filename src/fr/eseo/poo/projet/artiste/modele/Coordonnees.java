@@ -1,6 +1,7 @@
 package fr.eseo.poo.projet.artiste.modele;
 
-import java.lang.Math;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Coordonnees {
 
@@ -46,46 +47,24 @@ public class Coordonnees {
 		this.ordonnee += deltaY;
 	}
 
-	public double distanceVers(Coordonnees autre) {
-		return Math.sqrt(Math.pow(autre.abscisse - this.abscisse, 2) + Math.pow(autre.ordonnee - this.ordonnee, 2));
+	public double distanceVers(Coordonnees autreCoordonnees) {
+		return Math.sqrt(Math.pow(autreCoordonnees.abscisse - this.abscisse, 2) + Math.pow(autreCoordonnees.ordonnee - this.ordonnee, 2));
 	}
 
-	public double angleVers(Coordonnees autre) {
-		double angleCoord = Math.atan2(this.ordonnee - autre.ordonnee, this.abscisse - autre.abscisse);
-		double angleAbscisse = Math.atan2(0, 1);
-		return angleCoord - angleAbscisse;
+	public double angleVers(Coordonnees autreCoordonnees) {
+		double angleCoord = Math.atan2(autreCoordonnees.ordonnee - this.ordonnee, autreCoordonnees.abscisse - this.abscisse);
+		return angleCoord;
 	}
-
+	
+	//Issu d'une réflexion de groupe avec Adrien CASTANIE, Evan DELAUNAY & Quentin PINEAU
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(abscisse);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(ordonnee);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
+    public String toString() {
+        Locale locale = Locale.getDefault();
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Coordonnees other = (Coordonnees) obj;
-		if (Double.doubleToLongBits(abscisse) != Double.doubleToLongBits(other.abscisse))
-			return false;
-		if (Double.doubleToLongBits(ordonnee) != Double.doubleToLongBits(other.ordonnee))
-			return false;
-		return true;
-	}
+        NumberFormat format = NumberFormat.getInstance(locale);
+        format.setMaximumFractionDigits(2);
+        format.setMinimumFractionDigits(1);
 
-	@Override
-	public String toString() {
-		return "(x=" + abscisse + ", y=" + ordonnee + ")";
-	}
+        return "(" + format.format(this.getAbscisse()) + " , " + format.format(this.getOrdonnee()) + ')';
+    }
 }

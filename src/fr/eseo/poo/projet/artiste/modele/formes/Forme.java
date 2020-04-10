@@ -14,10 +14,6 @@ public abstract class Forme {
 		this(new Coordonnees(), LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT);
 	}
 
-	public Forme(double x, double y, double largeur, double hauteur) {
-		this(new Coordonnees(x, y), largeur, hauteur);
-	}
-
 	public Forme(Coordonnees position, double largeur, double hauteur) {
 		setPosition(position);
 		setLargeur(largeur);
@@ -56,40 +52,24 @@ public abstract class Forme {
 		this.hauteur=hauteur;
 	}
 	
-	public double getX() {
+	public double getCadreMaxX() {
+		return this.position.getAbscisse() + this.largeur;
+	}
+	
+	public double getCadreMaxY() {
+		return this.position.getOrdonnee() + this.hauteur;
+	}
+	
+	public double getCadreMinX() {
 		return this.position.getAbscisse();
 	}
 	
-	public void setX(double X) {
-		this.position.setAbscisse(X);
-	}
-	
-	public double getY() {
+	public double getCadreMinY() {
 		return this.position.getOrdonnee();
 	}
 	
-	public void setY(double Y) {
-		this.position.setOrdonnee(Y);
-	}
-	
-	public double getXMax() {
-		return getX() + this.largeur;
-	}
-	
-	public double getYMax() {
-		return getY() + this.hauteur;
-	}
-	
-	public double getXMin() {
-		return getX();
-	}
-	
-	public double getYMin() {
-		return getY();
-	}
-	
-	public void deplacerVers(double x, double y) {
-		this.position.deplacerVers(x, y);
+	public void deplacerVers(double nouvelleAbscisse, double nouvelleOrdonnee) {
+		this.position.deplacerVers(nouvelleAbscisse, nouvelleOrdonnee);
 	}
 	
 	public void deplacerDe(double deltaX, double deltaY) {
