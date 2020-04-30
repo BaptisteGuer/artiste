@@ -48,23 +48,26 @@ public class Coordonnees {
 	}
 
 	public double distanceVers(Coordonnees autreCoordonnees) {
-		return Math.sqrt(Math.pow(autreCoordonnees.abscisse - this.abscisse, 2) + Math.pow(autreCoordonnees.ordonnee - this.ordonnee, 2));
+		return Math.sqrt(Math.pow(autreCoordonnees.abscisse - this.abscisse, 2)
+				+ Math.pow(autreCoordonnees.ordonnee - this.ordonnee, 2));
 	}
 
 	public double angleVers(Coordonnees autreCoordonnees) {
-		double angleCoord = Math.atan2(autreCoordonnees.ordonnee - this.ordonnee, autreCoordonnees.abscisse - this.abscisse);
+		double angleCoord = Math.atan2(autreCoordonnees.ordonnee - this.ordonnee,
+				autreCoordonnees.abscisse - this.abscisse);
 		return angleCoord;
 	}
-	
-	//Issu d'une réflexion de groupe avec Adrien CASTANIE, Evan DELAUNAY & Quentin PINEAU
+
+	// Issu d'une réflexion de groupe avec Adrien CASTANIE, Evan DELAUNAY & Quentin
+	// PINEAU
 	@Override
-    public String toString() {
-        Locale locale = Locale.getDefault();
+	public String toString() {
+		Locale locale = Locale.getDefault();
 
-        NumberFormat format = NumberFormat.getInstance(locale);
-        format.setMaximumFractionDigits(2);
-        format.setMinimumFractionDigits(1);
-
-        return "(" + format.format(this.getAbscisse()) + " , " + format.format(this.getOrdonnee()) + ')';
-    }
+		NumberFormat format = NumberFormat.getInstance(locale);
+		format.setMaximumFractionDigits(2);
+		format.setMinimumFractionDigits(1);
+		format.setGroupingUsed(false);
+		return "(" + format.format(this.getAbscisse()) + " , " + format.format(this.getOrdonnee()) + ')';
+	}
 }
