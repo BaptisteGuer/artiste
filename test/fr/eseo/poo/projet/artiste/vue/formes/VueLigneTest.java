@@ -25,6 +25,10 @@ public class VueLigneTest {
 		PanneauDessin panel = new PanneauDessin(500, 500, Color.white);	
 		Ligne l1 = new Ligne(new Coordonnees(14, 15), 42, 150);
 		VueLigne vl1 = new VueLigne(l1);
+		Ligne l2 = new Ligne(new Coordonnees(30, 30), 42, 150);
+		l2.setCouleur(Color.GREEN);
+		VueLigne vl2 = new VueLigne(l2);
+		panel.ajouterVueForme(vl2);
 		panel.ajouterVueForme(vl1);
 		JFrame jframe = new JFrame("VueLigneTest");
 		jframe.add(panel);

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import fr.eseo.poo.projet.artiste.controleur.outils.Outil;
+import fr.eseo.poo.projet.artiste.modele.formes.Forme;
 import fr.eseo.poo.projet.artiste.vue.formes.VueForme;
 
 public class PanneauDessin extends JPanel {
@@ -19,17 +20,19 @@ public class PanneauDessin extends JPanel {
 	public static final Color COULEUR_FOND_PAR_DEFAUT = Color.green;
 	private final List<VueForme> vueFormes;
 	private Outil outilCourant;
+	private Color couleurCourante;
+	private boolean modeRemplissage;
 
 	public PanneauDessin(int largeur, int hauteur, Color color) {
 		this.vueFormes = new ArrayList<VueForme>();
 		setPreferredSize(new Dimension(largeur, hauteur));
 		setBackground(color);
+		this.couleurCourante = Forme.COULEUR_PAR_DEFAUT;
+		this.modeRemplissage = false;
 	}
 
 	public PanneauDessin() {
-		this.vueFormes = new ArrayList<VueForme>();
-		setPreferredSize(new Dimension(LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT));
-		setBackground(COULEUR_FOND_PAR_DEFAUT);
+		this(LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT, COULEUR_FOND_PAR_DEFAUT);
 	}
 
 	public List<VueForme> getVueFormes() {
@@ -75,6 +78,22 @@ public class PanneauDessin extends JPanel {
 
 	private void setOutilCourant(Outil outilCourant) {
 		this.outilCourant = outilCourant;
+	}
+
+	public Color getCouleurCourante() {
+		return couleurCourante;
+	}
+
+	public void setCouleurCourante(Color couleurCourante) {
+		this.couleurCourante = couleurCourante;
+	}
+
+	public boolean getModeRemplissage() {
+		return modeRemplissage;
+	}
+
+	public void setModeRemplissage(boolean modeRemplissage) {
+		this.modeRemplissage = modeRemplissage;
 	}
 
 }

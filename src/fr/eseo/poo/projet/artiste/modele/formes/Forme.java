@@ -1,13 +1,19 @@
 package fr.eseo.poo.projet.artiste.modele.formes;
 
+import java.awt.Color;
+import javax.swing.UIManager;
+
+import fr.eseo.poo.projet.artiste.modele.Coloriable;
 import fr.eseo.poo.projet.artiste.modele.Coordonnees;
 
-public abstract class Forme {
+public abstract class Forme implements Coloriable{
 
-	public static final double LARGEUR_PAR_DEFAUT = 10;
-	public static final double HAUTEUR_PAR_DEFAUT = 15;
+	public static final double LARGEUR_PAR_DEFAUT = 100;
+	public static final double HAUTEUR_PAR_DEFAUT = 150;
+	public static final Color COULEUR_PAR_DEFAUT = UIManager.getColor("Panel.foreground");
 	private double largeur;
 	private double hauteur;
+	private Color couleur;
 	private Coordonnees position;
 
 	public Forme() {
@@ -18,6 +24,7 @@ public abstract class Forme {
 		setPosition(position);
 		setLargeur(largeur);
 		setHauteur(hauteur);
+		this.couleur = COULEUR_PAR_DEFAUT;
 	}
 
 	public Forme(double largeur, double hauteur) {
@@ -25,7 +32,7 @@ public abstract class Forme {
 	}
 
 	public Forme(Coordonnees position) {
-		this(position, LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT);
+		this(position, LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT);	
 	}
 
 	public Coordonnees getPosition() {
@@ -50,6 +57,16 @@ public abstract class Forme {
 
 	public void setHauteur(double hauteur) {
 		this.hauteur = hauteur;
+	}
+
+	@Override
+	public Color getCouleur() {
+		return couleur;
+	}
+
+	@Override
+	public void setCouleur(Color couleur) {
+		this.couleur = couleur;
 	}
 
 	public double getCadreMaxX() {
@@ -97,5 +114,7 @@ public abstract class Forme {
 	public abstract double perimetre();
 
 	public abstract boolean contient(Coordonnees coordonnee);
+	
+	
 
 }

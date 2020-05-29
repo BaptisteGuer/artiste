@@ -4,23 +4,27 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 import fr.eseo.poo.projet.artiste.modele.Coordonnees;
+import fr.eseo.poo.projet.artiste.modele.Remplissable;
 
-public class Ellipse extends Forme {
+public class Ellipse extends Forme implements Remplissable {
+
+	private boolean estRempli;
 
 	public Ellipse() {
-		super();
+		this(new Coordonnees(), LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT);
 	}
 
 	public Ellipse(Coordonnees position, double largeur, double hauteur) {
 		super(position, largeur, hauteur);
+		this.estRempli = false;
 	}
 
 	public Ellipse(double largeur, double hauteur) {
-		super(largeur, hauteur);
+		this(new Coordonnees(), largeur, hauteur);
 	}
 
 	public Ellipse(Coordonnees position) {
-		super(position);
+		this(position, LARGEUR_PAR_DEFAUT, HAUTEUR_PAR_DEFAUT);
 	}
 
 	@Override
@@ -72,17 +76,38 @@ public class Ellipse extends Forme {
 		String sorte;
 		if (this instanceof Cercle) {
 			sorte = "[Cercle]";
+			if (this.estRempli()) {
+				sorte = "[Cercle-Rempli]";
+			}
 		} else {
 			sorte = "[Ellipse]";
+			if (this.estRempli()) {
+				sorte = "[Ellipse-Rempli]";
+			}
 		}
 		Locale locale = Locale.getDefault();
 		NumberFormat format = NumberFormat.getInstance(locale);
 		format.setMaximumFractionDigits(2);
 		format.setMinimumFractionDigits(1);
 		format.setGroupingUsed(false);
+		char vert = 'V';
+		if (locale.getLanguage().equals("en")) {
+			vert = 'G';
+		}
 		return sorte + " : pos " + getPosition() + " dim " + format.format(getLargeur()) + " x "
 				+ format.format(getHauteur()) + " périmètre : " + format.format(perimetre()) + " aire : "
-				+ format.format(aire());
+				+ format.format(aire()) + " couleur = R" + this.getCouleur().getRed() + "," + vert
+				+ this.getCouleur().getGreen() + ",B" + this.getCouleur().getBlue();
+	}
+
+	@Override
+	public boolean estRempli() {
+		return estRempli;
+	}
+
+	@Override
+	public void setRempli(boolean modeRemplissage) {
+		this.estRempli = modeRemplissage;
 	}
 
 }

@@ -11,6 +11,7 @@ public class VueLigne extends VueForme {
 	}
 
 	public void affiche(Graphics2D g2d) {
+		g2d.setColor(this.forme.getCouleur());
 		g2d.drawLine((int) Math.round(((Ligne) this.forme).getC1().getAbscisse()),
 				(int) Math.round(((Ligne) this.forme).getC1().getOrdonnee()),
 				(int) Math.round(((Ligne) this.forme).getC2().getAbscisse()),

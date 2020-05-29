@@ -73,8 +73,14 @@ public class Ligne extends Forme {
 		if (angle < 0) {
 			angle = angle + 360;
 		}
+		char vert = 'V';
+		if (locale.getLanguage().equals("en")) {
+			vert = 'G';
+		}
 		return "[Ligne] c1 : " + getC1() + " c2 : " + getC2() + " longueur : "
-				+ format.format(getC1().distanceVers(getC2())) + " angle : " + format.format(angle) + "°";
+				+ format.format(getC1().distanceVers(getC2())) + " angle : " + format.format(angle) + "°"
+				+ " couleur = R" + this.getCouleur().getRed() + "," + vert + this.getCouleur().getGreen() + ",B"
+				+ this.getCouleur().getBlue();
 	}
 
 }

@@ -2,6 +2,7 @@ package fr.eseo.poo.projet.artiste.modele.formes;
 
 import static org.junit.Assert.assertEquals;
 
+import java.awt.Color;
 import java.util.Locale;
 
 import org.junit.Test;
@@ -92,7 +93,7 @@ public class LigneTest {
 		Ligne l1 = new Ligne(new Coordonnees(85, 50));
 		assertEquals(18.027, l1.perimetre(), EPSILON);
 	}
-	
+
 	@Test
 	public void testDeplacerDe() {
 		Ligne l1 = new Ligne(new Coordonnees(85, 50));
@@ -100,7 +101,7 @@ public class LigneTest {
 		assertEquals(135, l1.getC1().getAbscisse(), EPSILON);
 		assertEquals(40, l1.getC1().getOrdonnee(), EPSILON);
 	}
-	
+
 	@Test
 	public void testDeplacerVers() {
 		Ligne l1 = new Ligne(new Coordonnees(10, 15));
@@ -113,14 +114,14 @@ public class LigneTest {
 	public void testToStringFR() {
 		Ligne l1 = new Ligne(new Coordonnees(85, 50));
 		Locale.setDefault(new Locale("fr"));
-		assertEquals("[Ligne] c1 : (85,0 , 50,0) c2 : (95,0 , 65,0) longueur : 18,03 angle : 56,31°", l1.toString());
+		assertEquals("[Ligne] c1 : (85,0 , 50,0) c2 : (95,0 , 65,0) longueur : 18,03 angle : 56,31° couleur = R51,V51,B51", l1.toString());
 	}
-	
+
 	@Test
 	public void testToStringUK() {
 		Ligne l1 = new Ligne(new Coordonnees(85, 50));
 		Locale.setDefault(new Locale("en"));
-		assertEquals("[Ligne] c1 : (85.0 , 50.0) c2 : (95.0 , 65.0) longueur : 18.03 angle : 56.31°", l1.toString());
+		assertEquals("[Ligne] c1 : (85.0 , 50.0) c2 : (95.0 , 65.0) longueur : 18.03 angle : 56.31° couleur = R51,G51,B51", l1.toString());
 	}
 
 	@Test
@@ -128,21 +129,27 @@ public class LigneTest {
 		Ligne l1 = new Ligne(new Coordonnees(85, 50));
 		Locale.setDefault(new Locale("fr"));
 		l1.setC2(new Coordonnees(50, 10));
-		assertEquals("[Ligne] c1 : (85,0 , 50,0) c2 : (50,0 , 10,0) longueur : 53,15 angle : 228,81°", l1.toString());
+		assertEquals(
+				"[Ligne] c1 : (85,0 , 50,0) c2 : (50,0 , 10,0) longueur : 53,15 angle : 228,81° couleur = R51,V51,B51",
+				l1.toString());
 	}
-	
+
 	@Test
 	public void testContient() {
 		Ligne l1 = new Ligne(new Coordonnees(85, 50));
-		assertEquals(true, l1.contient(new Coordonnees(84.8,49.8)));
+		assertEquals(true, l1.contient(new Coordonnees(84.8, 49.8)));
 	}
-	
+
 	@Test
 	public void testContientPas() {
 		Ligne l1 = new Ligne(new Coordonnees(85, 50));
-		assertEquals(false, l1.contient(new Coordonnees(86,49)));
+		assertEquals(false, l1.contient(new Coordonnees(86, 49)));
 	}
-
-
-
+	
+	@Test
+	public void testCouleur() {
+		Ligne l1 = new Ligne();
+		l1.setCouleur(Color.BLUE);
+		assertEquals(Color.BLUE, l1.getCouleur());
+	}
 }

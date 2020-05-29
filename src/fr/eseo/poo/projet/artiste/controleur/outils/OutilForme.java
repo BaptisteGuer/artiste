@@ -11,7 +11,7 @@ public abstract class OutilForme extends Outil {
 	@Override
 	public void mouseReleased(MouseEvent event) {
 		super.mouseReleased(event);
-		if (getDebut().getAbscisse() != getFin().getAbscisse() && getDebut().getOrdonnee() != getFin().getOrdonnee()) {
+		if (getDebut().getAbscisse() != getFin().getAbscisse() || getDebut().getOrdonnee() != getFin().getOrdonnee()) {
 			this.getPanneauDessin().ajouterVueForme(creerVueForme());
 			this.getPanneauDessin().repaint();
 		}
