@@ -26,8 +26,8 @@ public class EllipseTest {
 		Ellipse e1 = new Ellipse();
 		assertEquals(0, e1.getPosition().getAbscisse(), EPSILON);
 		assertEquals(0, e1.getPosition().getOrdonnee(), EPSILON);
-		assertEquals(10, e1.getLargeur(), EPSILON);
-		assertEquals(15, e1.getHauteur(), EPSILON);
+		assertEquals(Ellipse.LARGEUR_PAR_DEFAUT, e1.getLargeur(), EPSILON);
+		assertEquals(Ellipse.HAUTEUR_PAR_DEFAUT, e1.getHauteur(), EPSILON);
 	}
 
 	@Test
@@ -88,7 +88,7 @@ public class EllipseTest {
 	@Test
 	public void testAire() {
 		Ellipse e1 = new Ellipse(new Coordonnees(15, 20));
-		assertEquals(117.810, e1.aire(), EPSILON);
+		assertEquals(11780.972, e1.aire(), EPSILON);
 	}
 
 	@Test
@@ -138,12 +138,13 @@ public class EllipseTest {
 
 	@Test
 	public void testRemplissage() {
-		Ellipse e1 = new Ellipse();
+		Ellipse e1 = new Ellipse(new Coordonnees(), 10, 15);
 		e1.setRempli(true);
 		Locale.setDefault(new Locale("fr"));
 		assertEquals(
 				"[Ellipse-Rempli] : pos (0,0 , 0,0) dim 10,0 x 15,0 périmètre : 39,66 aire : 117,81 couleur = R51,V51,B51",
 				e1.toString());
+		assertEquals(true, e1.estRempli());
 	}
 
 }

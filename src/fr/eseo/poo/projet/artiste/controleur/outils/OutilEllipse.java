@@ -23,5 +23,4 @@ public class OutilEllipse extends OutilForme {
 		VueEllipse vueE = new VueEllipse(ellipse);
 		return vueE;
 	}
-
 }

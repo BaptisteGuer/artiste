@@ -71,7 +71,7 @@ public class Etoile extends Forme implements Remplissable {
 		return coordonnees;
 	}
 
-	public void setCoordonnees(ArrayList<Coordonnees> coordonnees) {
+	public void setCoordonnees(List<Coordonnees> coordonnees) {
 		this.coordonnees = coordonnees;
 	}
 
@@ -92,7 +92,7 @@ public class Etoile extends Forme implements Remplissable {
 	}
 
 	public void setAnglePremiereBranche(double angle) {
-		if (angle < -Math.PI || angle > Math.PI) {
+		if (angle < -Math.PI || angle >= Math.PI) {
 			throw new IllegalArgumentException(
 					"L'angle formé entre la première branche et l’horizontale doit être compris entre PI et -PI");
 		}

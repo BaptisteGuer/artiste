@@ -27,8 +27,8 @@ public class CercleTest {
 		Cercle c1 = new Cercle();
 		assertEquals(0, c1.getPosition().getAbscisse(), EPSILON);
 		assertEquals(0, c1.getPosition().getOrdonnee(), EPSILON);
-		assertEquals(10, c1.getLargeur(), EPSILON);
-		assertEquals(10, c1.getHauteur(), EPSILON);
+		assertEquals(Cercle.LARGEUR_PAR_DEFAUT, c1.getLargeur(), EPSILON);
+		assertEquals(Cercle.LARGEUR_PAR_DEFAUT, c1.getHauteur(), EPSILON);
 	}
 
 	@Test
@@ -55,7 +55,7 @@ public class CercleTest {
 
 	@Test
 	public void testToStringFR() {
-		Cercle c1 = new Cercle(new Coordonnees(85, 50));
+		Cercle c1 = new Cercle(new Coordonnees(85, 50),10);
 		Locale.setDefault(new Locale("fr"));
 		assertEquals(
 				"[Cercle] : pos (85,0 , 50,0) dim 10,0 x 10,0 périmètre : 31,42 aire : 78,54 couleur = R51,V51,B51",
@@ -64,7 +64,7 @@ public class CercleTest {
 
 	@Test
 	public void testToStringUK() {
-		Cercle c1 = new Cercle(new Coordonnees(85, 50));
+		Cercle c1 = new Cercle(new Coordonnees(85, 50),10);
 		Locale.setDefault(new Locale("en"));
 		assertEquals(
 				"[Cercle] : pos (85.0 , 50.0) dim 10.0 x 10.0 périmètre : 31.42 aire : 78.54 couleur = R51,G51,B51",
@@ -80,7 +80,7 @@ public class CercleTest {
 
 	@Test
 	public void testRemplissage() {
-		Cercle c1 = new Cercle();
+		Cercle c1 = new Cercle(10);
 		c1.setRempli(true);
 		Locale.setDefault(new Locale("fr"));
 		assertEquals(

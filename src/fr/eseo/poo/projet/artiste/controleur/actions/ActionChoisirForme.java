@@ -6,6 +6,7 @@ import javax.swing.AbstractAction;
 
 import fr.eseo.poo.projet.artiste.controleur.outils.OutilCercle;
 import fr.eseo.poo.projet.artiste.controleur.outils.OutilEllipse;
+import fr.eseo.poo.projet.artiste.controleur.outils.OutilEtoile;
 import fr.eseo.poo.projet.artiste.controleur.outils.OutilLigne;
 import fr.eseo.poo.projet.artiste.vue.ihm.PanneauBarreOutils;
 import fr.eseo.poo.projet.artiste.vue.ihm.PanneauDessin;
@@ -15,6 +16,7 @@ public class ActionChoisirForme extends AbstractAction {
 	public static final String NOM_ACTION_LIGNE = "Ligne";
 	public static final String NOM_ACTION_ELLIPSE = "Ellipse";
 	public static final String NOM_ACTION_CERCLE = "Cercle";
+	public static final String NOM_ACTION_ETOILE = "Etoile";
 	private PanneauDessin panneauDessin;
 	private PanneauBarreOutils panneauOutils;
 	private String action;
@@ -39,6 +41,10 @@ public class ActionChoisirForme extends AbstractAction {
 		case NOM_ACTION_CERCLE:
 			this.action = NOM_ACTION_CERCLE;
 			this.panneauDessin.associerOutil(new OutilCercle());
+			break;
+		case NOM_ACTION_ETOILE:
+			this.action = NOM_ACTION_ETOILE;
+			this.panneauDessin.associerOutil(new OutilEtoile(panneauOutils));
 			break;
 		default:
 			

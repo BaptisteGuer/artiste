@@ -27,13 +27,13 @@ public class LigneTest {
 		Ligne l1 = new Ligne();
 		assertEquals(0, l1.getC1().getAbscisse(), EPSILON);
 		assertEquals(0, l1.getC1().getOrdonnee(), EPSILON);
-		assertEquals(10, l1.getLargeur(), EPSILON);
-		assertEquals(15, l1.getHauteur(), EPSILON);
+		assertEquals(Ligne.LARGEUR_PAR_DEFAUT, l1.getLargeur(), EPSILON);
+		assertEquals(Ligne.HAUTEUR_PAR_DEFAUT, l1.getHauteur(), EPSILON);
 	}
 
 	@Test
 	public void testConstructeurOrdonneeAbscisse() {
-		Ligne l1 = new Ligne(new Coordonnees(15, -10));
+		Ligne l1 = new Ligne(new Coordonnees(15, -10), 10, 15);
 		assertEquals(15, l1.getC1().getAbscisse(), EPSILON);
 		assertEquals(-10, l1.getC1().getOrdonnee(), EPSILON);
 		assertEquals(10, l1.getLargeur(), EPSILON);
@@ -90,7 +90,7 @@ public class LigneTest {
 
 	@Test
 	public void testPerimetre() {
-		Ligne l1 = new Ligne(new Coordonnees(85, 50));
+		Ligne l1 = new Ligne(new Coordonnees(85, 50), 10, 15);
 		assertEquals(18.027, l1.perimetre(), EPSILON);
 	}
 
@@ -112,14 +112,14 @@ public class LigneTest {
 
 	@Test
 	public void testToStringFR() {
-		Ligne l1 = new Ligne(new Coordonnees(85, 50));
+		Ligne l1 = new Ligne(new Coordonnees(85, 50), 10, 15);
 		Locale.setDefault(new Locale("fr"));
 		assertEquals("[Ligne] c1 : (85,0 , 50,0) c2 : (95,0 , 65,0) longueur : 18,03 angle : 56,31° couleur = R51,V51,B51", l1.toString());
 	}
 
 	@Test
 	public void testToStringUK() {
-		Ligne l1 = new Ligne(new Coordonnees(85, 50));
+		Ligne l1 = new Ligne(new Coordonnees(85, 50), 10, 15);
 		Locale.setDefault(new Locale("en"));
 		assertEquals("[Ligne] c1 : (85.0 , 50.0) c2 : (95.0 , 65.0) longueur : 18.03 angle : 56.31° couleur = R51,G51,B51", l1.toString());
 	}
