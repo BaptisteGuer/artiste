@@ -11,7 +11,7 @@ import fr.eseo.poo.projet.artiste.vue.ihm.PanneauBarreOutils;
 import fr.eseo.poo.projet.artiste.vue.ihm.PanneauDessin;
 
 public class EtreUnArtiste {
-	
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -20,10 +20,9 @@ public class EtreUnArtiste {
 			}
 		});
 	}
-	
-	
-	public EtreUnArtiste(){
-		PanneauDessin panel = new PanneauDessin(500, 500, Color.white);	
+
+	public EtreUnArtiste() {
+		PanneauDessin panel = new PanneauDessin(500, 500, Color.white);
 		PanneauBarreOutils panelOutils = new PanneauBarreOutils(panel);
 		JFrame jframe = new JFrame("Etre Un Artiste");
 		jframe.add(panel);
