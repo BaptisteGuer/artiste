@@ -15,37 +15,49 @@ public class EllipseTest {
 	@Test
 	public void testConstructeurComplet() {
 		Ellipse e1 = new Ellipse(new Coordonnees(10, -10), 20, 10);
-		assertEquals("Test largeur du constructeur de Ellipse avec coordonnee, largeur et hauteur",20, e1.getLargeur(), EPSILON);
-		assertEquals("Test hauteur du constructeur de Ellipse avec coordonnee, largeur et hauteur",10, e1.getHauteur(), EPSILON);
-		assertEquals("Test ordonnee du constructeur de Ellipse avec coordonnee, largeur et hauteur",-10, e1.getPosition().getOrdonnee(), EPSILON);
-		assertEquals("Test abscisse du constructeur de Ellipse avec coordonnee, largeur et hauteur",10, e1.getPosition().getAbscisse(), EPSILON);
+		assertEquals("Test largeur du constructeur de Ellipse avec coordonnee, largeur et hauteur", 20, e1.getLargeur(),
+				EPSILON);
+		assertEquals("Test hauteur du constructeur de Ellipse avec coordonnee, largeur et hauteur", 10, e1.getHauteur(),
+				EPSILON);
+		assertEquals("Test ordonnee du constructeur de Ellipse avec coordonnee, largeur et hauteur", -10,
+				e1.getPosition().getOrdonnee(), EPSILON);
+		assertEquals("Test abscisse du constructeur de Ellipse avec coordonnee, largeur et hauteur", 10,
+				e1.getPosition().getAbscisse(), EPSILON);
 	}
 
 	@Test
 	public void testConstructeurVide() {
 		Ellipse e1 = new Ellipse();
-		assertEquals("Test abscisse du constructeur de Ellipse vide",0, e1.getPosition().getAbscisse(), EPSILON);
-		assertEquals("Test ordonnee du constructeur de Ellipse vide",0, e1.getPosition().getOrdonnee(), EPSILON);
-		assertEquals("Test largeur du constructeur de Ellipse vide",Ellipse.LARGEUR_PAR_DEFAUT, e1.getLargeur(), EPSILON);
-		assertEquals("Test hauteur du constructeur de Ellipse vide",Ellipse.HAUTEUR_PAR_DEFAUT, e1.getHauteur(), EPSILON);
+		assertEquals("Test abscisse du constructeur de Ellipse vide", 0, e1.getPosition().getAbscisse(), EPSILON);
+		assertEquals("Test ordonnee du constructeur de Ellipse vide", 0, e1.getPosition().getOrdonnee(), EPSILON);
+		assertEquals("Test largeur du constructeur de Ellipse vide", Ellipse.LARGEUR_PAR_DEFAUT, e1.getLargeur(),
+				EPSILON);
+		assertEquals("Test hauteur du constructeur de Ellipse vide", Ellipse.HAUTEUR_PAR_DEFAUT, e1.getHauteur(),
+				EPSILON);
 	}
 
 	@Test
 	public void testConstructeurOrdonneeAbscisse() {
 		Ellipse e1 = new Ellipse(new Coordonnees(-14, 63));
-		assertEquals("Test abscisse du constructeur de Ellipse avec coordonnee",-14, e1.getPosition().getAbscisse(), EPSILON);
-		assertEquals("Test ordonnee du constructeur de Ellipse avec coordonnee",63, e1.getPosition().getOrdonnee(), EPSILON);
-		assertEquals("Test largeur du constructeur de Ellipse avec coordonnee",Ellipse.LARGEUR_PAR_DEFAUT, e1.getLargeur(), EPSILON);
-		assertEquals("Test hauteur du constructeur de Ellipse avec coordonnee",Ellipse.HAUTEUR_PAR_DEFAUT, e1.getHauteur(), EPSILON);
+		assertEquals("Test abscisse du constructeur de Ellipse avec coordonnee", -14, e1.getPosition().getAbscisse(),
+				EPSILON);
+		assertEquals("Test ordonnee du constructeur de Ellipse avec coordonnee", 63, e1.getPosition().getOrdonnee(),
+				EPSILON);
+		assertEquals("Test largeur du constructeur de Ellipse avec coordonnee", Ellipse.LARGEUR_PAR_DEFAUT,
+				e1.getLargeur(), EPSILON);
+		assertEquals("Test hauteur du constructeur de Ellipse avec coordonnee", Ellipse.HAUTEUR_PAR_DEFAUT,
+				e1.getHauteur(), EPSILON);
 	}
 
 	@Test
 	public void testConstructeurLargeurHauteur() {
 		Ellipse e1 = new Ellipse(52, 96);
-		assertEquals("Test abscisse du constructeur de Ellipse avec largeur et hauteur",0, e1.getPosition().getAbscisse(), EPSILON);
-		assertEquals("Test ordonnee du constructeur de Ellipse avec largeur et hauteur",0, e1.getPosition().getOrdonnee(), EPSILON);
-		assertEquals("Test largeur du constructeur de Ellipse avec largeur et hauteur",52, e1.getLargeur(), EPSILON);
-		assertEquals("Test hauteur du constructeur de Ellipse avec largeur et hauteur",96, e1.getHauteur(), EPSILON);
+		assertEquals("Test abscisse du constructeur de Ellipse avec largeur et hauteur", 0,
+				e1.getPosition().getAbscisse(), EPSILON);
+		assertEquals("Test ordonnee du constructeur de Ellipse avec largeur et hauteur", 0,
+				e1.getPosition().getOrdonnee(), EPSILON);
+		assertEquals("Test largeur du constructeur de Ellipse avec largeur et hauteur", 52, e1.getLargeur(), EPSILON);
+		assertEquals("Test hauteur du constructeur de Ellipse avec largeur et hauteur", 96, e1.getHauteur(), EPSILON);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -73,26 +85,26 @@ public class EllipseTest {
 		Ellipse e1 = new Ellipse(52, 96);
 		e1.setHauteur(85);
 		e1.setLargeur(1);
-		assertEquals("Test largeur setter/getter de Ellipse",1, e1.getLargeur(), EPSILON);
-		assertEquals("Test hauteur setter/getter de Ellipse",85, e1.getHauteur(), EPSILON);
+		assertEquals("Test largeur setter/getter de Ellipse", 1, e1.getLargeur(), EPSILON);
+		assertEquals("Test hauteur setter/getter de Ellipse", 85, e1.getHauteur(), EPSILON);
 		e1.setPosition(new Coordonnees(8, -12));
-		assertEquals("Test abscisse setter/getter de Ellipse",8, e1.getPosition().getAbscisse(), EPSILON);
-		assertEquals("Test ordonnee setter/getter de Ellipse",-12, e1.getPosition().getOrdonnee(), EPSILON);
+		assertEquals("Test abscisse setter/getter de Ellipse", 8, e1.getPosition().getAbscisse(), EPSILON);
+		assertEquals("Test ordonnee setter/getter de Ellipse", -12, e1.getPosition().getOrdonnee(), EPSILON);
 	}
 
 	@Test
 	public void testCadre() {
 		Ellipse e1 = new Ellipse();
 		e1.setLargeur(10);
-		assertEquals("Test abscisse Max du cadre de Ellipse",10, e1.getCadreMaxX(), EPSILON);
+		assertEquals("Test abscisse Max du cadre de Ellipse", 10, e1.getCadreMaxX(), EPSILON);
 		e1.setHauteur(20);
-		assertEquals("Test ordonnee Max du cadre de Ellipse",20, e1.getCadreMaxY(), EPSILON);
+		assertEquals("Test ordonnee Max du cadre de Ellipse", 20, e1.getCadreMaxY(), EPSILON);
 	}
 
 	@Test
 	public void testAire() {
 		Ellipse e1 = new Ellipse(new Coordonnees(15, 20));
-		assertEquals("Test aire de Ellipse",11780.972, e1.aire(), EPSILON);
+		assertEquals("Test aire de Ellipse", 11780.972, e1.aire(), EPSILON);
 	}
 
 	@Test
@@ -100,7 +112,7 @@ public class EllipseTest {
 		Ellipse e1 = new Ellipse();
 		e1.setHauteur(10);
 		e1.setLargeur(7);
-		assertEquals("Test perimetre de Ellipse",26.911, e1.perimetre(), EPSILON);
+		assertEquals("Test perimetre de Ellipse", 26.911, e1.perimetre(), EPSILON);
 	}
 
 	@Test
@@ -130,14 +142,14 @@ public class EllipseTest {
 	@Test
 	public void testContientPas() {
 		Ellipse e1 = new Ellipse(new Coordonnees(10, -10), 20, 10);
-		assertEquals("Test contient avec coordonnee en dehors de Ellipse",false, e1.contient(new Coordonnees(32, -5)));
+		assertEquals("Test contient avec coordonnee en dehors de Ellipse", false, e1.contient(new Coordonnees(32, -5)));
 	}
 
 	@Test
 	public void testCouleur() {
 		Ellipse e1 = new Ellipse();
 		e1.setCouleur(Color.BLACK);
-		assertEquals("Test setter/getter de couleur de Ellipse",Color.BLACK, e1.getCouleur());
+		assertEquals("Test setter/getter de couleur de Ellipse", Color.BLACK, e1.getCouleur());
 	}
 
 	@Test
