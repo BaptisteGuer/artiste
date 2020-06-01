@@ -18,10 +18,11 @@ public class OutilSelectionner extends Outil {
 		for (VueForme vf : this.getPanneauDessin().getVueFormes()) {
 			if (vf.getForme().contient(new Coordonnees(event.getX(), event.getY()))) {
 				this.setFormeSelectionnee(vf.getForme());
+				JOptionPane.showMessageDialog(this.getPanneauDessin(), this.formeSelectionnee.toString(),
+						ActionSelectionner.NOM_ACTION, JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
-		JOptionPane.showMessageDialog(this.getPanneauDessin(), this.formeSelectionnee.toString(),
-				ActionSelectionner.NOM_ACTION, JOptionPane.INFORMATION_MESSAGE);
+		
 	}
 
 	public Forme getFormeSelectionnee() {
